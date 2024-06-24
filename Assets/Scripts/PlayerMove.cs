@@ -19,8 +19,6 @@ public class PlayerMove : MonoBehaviour
     // 매 프레임마다 반복해서 실행하는 함수
     void Update()
     {
-        // 이동 공식: p = p0 + vt
-
         //Vector3 direction = new Vector3(1, 1, 0);
         //transform.position += Vector3.right * moveSpeed;
         //transform.position += direction * moveSpeed;
@@ -34,6 +32,18 @@ public class PlayerMove : MonoBehaviour
         Vector3 direction = new Vector3(h, v, 0);
         // 벡터의 길이를 무조건 1로 바꾼다.(정규화)
         direction.Normalize();
+
+        // 이동 공식: p = p0 + vt
         transform.position += direction * moveSpeed * Time.deltaTime;
+        //transform.eulerAngles += direction * moveSpeed * Time.deltaTime;
+        //transform.localScale += direction * moveSpeed * Time.deltaTime;
+
+        // 특정 키를 입력했을 때 사용하는 함수(Get, GetDown, GetUp)
+        //bool value = Input.GetButton("Horizontal");
+        
+        //if(Input.GetKey(KeyCode.F1))
+        //{
+        //    print("F1 키를 눌렀습니다!");
+        //}
     }
 }
