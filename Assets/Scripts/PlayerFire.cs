@@ -26,6 +26,7 @@ public class PlayerFire : MonoBehaviour
             // 3. 생성된 총알을 총구로 옮긴다.
             // 3-1. 총구를 게임 오브젝트 변수로 직접 지정하는 방법
             go.transform.position = firePosition.transform.position;
+            go.transform.rotation = firePosition.transform.rotation;
             // 3-2. 플레이어의 위치에서 위로 1.5미터 지점을 지정하는 방법
             //Vector3 firePos = transform.position + new Vector3(0, 1.5f, 0);
             //go.transform.position = firePos;
