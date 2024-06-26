@@ -13,7 +13,6 @@ public class EnemyFactory : MonoBehaviour
     float currentTime = 0;
     float printTime = 1.0f;
     int timeCount = 3;
-    bool isTimerStart = true;
 
     void Start()
     {
@@ -57,9 +56,6 @@ public class EnemyFactory : MonoBehaviour
             if (timeCount == 0)
             {
                 print("Start!");
-                isTimerStart = false;
-                //currentTime = 0;
-                //printTime = 3;
             }
             else
             {

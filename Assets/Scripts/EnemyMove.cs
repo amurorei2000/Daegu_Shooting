@@ -50,5 +50,8 @@ public class EnemyMove : MonoBehaviour
 
         // p = p0 + vt
         transform.position += dir * moveSpeed * Time.deltaTime;
+
+        //transform.Translate(dir * moveSpeed * Time.deltaTime);
+
     }
 }
