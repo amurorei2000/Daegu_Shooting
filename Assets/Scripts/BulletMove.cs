@@ -6,7 +6,7 @@ public class BulletMove : MonoBehaviour
 {
     public float moveSpeed = 10;
     public GameObject player;
-
+    public float lifeSpan = 3.0f;
 
 
     void Start()
@@ -28,6 +28,12 @@ public class BulletMove : MonoBehaviour
 
         transform.position += localDir * moveSpeed * Time.deltaTime;
         //transform.position += new Vector3(0, 1, 0) * moveSpeed * Time.deltaTime;
+
+        lifeSpan -= Time.deltaTime;
+        if(lifeSpan < 0)
+        {
+            Destroy(gameObject);
+        }
 
     }
 

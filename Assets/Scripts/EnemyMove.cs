@@ -72,9 +72,11 @@ public class EnemyMove : MonoBehaviour
         {
             // 플레이어를 제거하고 
             Destroy(other.gameObject);
-            // 나도 제거한다.
-            Destroy(gameObject);
+            
         }
+        // 나도 제거한다.
+        Destroy(gameObject);
+
     }
 
 }
