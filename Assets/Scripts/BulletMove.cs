@@ -7,6 +7,7 @@ public class BulletMove : MonoBehaviour
     public float moveSpeed = 10;
     public GameObject player;
     public float lifeSpan = 3.0f;
+    public GameObject explosionPrefab;
 
 
     void Start()
@@ -57,6 +58,13 @@ public class BulletMove : MonoBehaviour
         if(enemy != null)
         {
             Destroy(col.gameObject);
+
+            // 폭발 이펙트 프리팹을 에너미가 있던 자리에 생성한다.
+            GameObject fx = Instantiate(explosionPrefab, col.transform.position, col.transform.rotation);
+
+            // 생성한 폭발 이펙트 오브젝트에서 파티클 시스템 컴포넌트를 가져와서 플레이한다.
+            ParticleSystem ps = fx.GetComponent<ParticleSystem>();
+            ps.Play();
 
             // 플레이어 게임 오브젝트에 붙어있는 PlayerFire 컴포넌트를 가져온다.
             PlayerFire playerFire = player.GetComponent<PlayerFire>();
