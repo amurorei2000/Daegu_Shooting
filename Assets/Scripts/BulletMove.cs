@@ -9,10 +9,15 @@ public class BulletMove : MonoBehaviour
     public float lifeSpan = 3.0f;
     public GameObject explosionPrefab;
 
+    PlayerFire pFire;
 
     void Start()
     {
-        
+        // Player 오브젝트의 PlayerFire 컴포넌트를 변수에 저장한다.
+        if (player != null)
+        {
+            pFire = player.GetComponent<PlayerFire>();
+        }
     }
 
     void Update()
@@ -33,7 +38,14 @@ public class BulletMove : MonoBehaviour
         lifeSpan -= Time.deltaTime;
         if(lifeSpan < 0)
         {
-            Destroy(gameObject);
+            if(pFire.useObjectPool || pFire.useArray)
+            {
+                Reload();
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
 
     }
@@ -74,6 +86,40 @@ public class BulletMove : MonoBehaviour
         }
 
         // 나를 제거한다.
-        Destroy(gameObject);
+        if (pFire.useObjectPool || pFire.useArray)
+        {
+            Reload();
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
+
+    public void Reload()
+    {
+        if (pFire.useObjectPool)
+        {
+            // 자기 자신을 bullets 리스트에 추가하고, 비활성화한다.
+            pFire.bullets.Add(gameObject);
+            lifeSpan = 3.0f;
+            gameObject.SetActive(false);
+        }
+        else if(pFire.useArray)
+        {
+            // bulletArray 배열의 빈 값이 있는 곳을 찾는다.
+            for(int i = 0; i < pFire.bulletArray.Length; i++)
+            {
+                // 만일, i번째 인덱스의 값이 null이라면...
+                if (pFire.bulletArray[i] == null)
+                {
+                    pFire.bulletArray[i] = gameObject;
+                    gameObject.SetActive(false);
+                    lifeSpan = 3.0f;
+                    break;
+                }
+            }
+        }
+    }
+
 }
