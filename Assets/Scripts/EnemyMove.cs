@@ -50,7 +50,8 @@ public class EnemyMove : MonoBehaviour
                 dir = Vector3.down;
             }
         }
-       
+
+        //print("읽은 값: " + GameManager.gm.BestScore);
     }
 
     void Update()
@@ -73,7 +74,9 @@ public class EnemyMove : MonoBehaviour
         {
             // 플레이어를 제거하고 
             Destroy(other.gameObject);
-            
+
+            // 최고 점수를 저장한다.
+            PlayerPrefs.SetInt("BestScore", GameManager.gm.BestScore);
         }
         // 나도 제거한다.
         Destroy(gameObject);
