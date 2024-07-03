@@ -12,10 +12,14 @@ public class Background : MonoBehaviour
 
     MeshRenderer mr;
 
+    
+
+
     void Start()
     {
         // Mesh Rederer ÄÄÆ÷³ÍÆ®¸¦ Ä³½ÌÇÑ´Ù.
         mr = GetComponent<MeshRenderer>();
+
     }
 
     void Update()
