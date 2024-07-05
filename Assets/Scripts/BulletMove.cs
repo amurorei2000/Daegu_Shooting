@@ -73,7 +73,7 @@ public class BulletMove : MonoBehaviour
             Destroy(col.gameObject);
 
             // GameManager에 있는 currentScore 값을 1 추가한다.
-            GameManager.gm.AddScore(1);
+            GameManager.gm.AddScore(11);
 
             // 폭발 이펙트 프리팹을 에너미가 있던 자리에 생성한다.
             GameObject fx = Instantiate(explosionPrefab, col.transform.position, col.transform.rotation);
